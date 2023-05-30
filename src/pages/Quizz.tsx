@@ -24,7 +24,6 @@ const Quizz = () => {
         if (selectedAnswerIndex === null) {
             setShowError(true);
         } else {
-            console.log('handleQuestionDone called');
             setShowError(false);
             setSelectedAnswerIndex(null);
             setActiveQuestion((prev) => prev + 1);
@@ -38,6 +37,7 @@ const Quizz = () => {
         } else {    
           setSelectedAnswer(false)
         }
+        console.log('Selected Answer:', selectedAnswer);
     }
 
     const handleQuestionDone = () => {
@@ -48,47 +48,10 @@ const Quizz = () => {
             navigate('/endquizz');
           return;
         }
-    
+
         setActiveQuestion((prev) => prev + 1);
         setSelectedAnswerIndex(null);
       };
-
-    // const handleQuestionDone = () => {
-    //     console.log('handleQuestionDone called');
-    
-    //     if (activeQuestion === quizzData.length - 1) {
-    //       console.log('Quiz finished');
-    //       // Handle quiz completion or navigation logic here
-    //     } else {
-    //       setActiveQuestion((prev) => {
-    //         console.log('Prev activeQuestion:', prev);
-    //         return prev + 1;
-    //       });
-    //       setSelectedAnswerIndex(null);
-    //     }
-    //   };
-
-    // const handleQuestionDone = () => {
-    //     if (activeQuestion === quizzData.length - 1) {
-    //       console.log('Quiz finished');
-    //       // Handle quiz completion or navigation logic here
-    //     } else {
-    //         setActiveQuestion((prev) => {
-    //         console.log('Prev activeQuestion:', prev);
-    //         // Increment the question number by 1 instead of directly using the previous state value
-    //         const nextQuestion = prev + 1;
-    //         if (nextQuestion < quizzData.length) {
-    //           return nextQuestion;
-    //         } else {
-    //           // Handle the case when nextQuestion exceeds the question count
-    //           console.log('Quiz finished');
-    //           // Handle quiz completion or navigation logic here
-    //           return prev;
-    //         }
-    //       });
-    //       setSelectedAnswerIndex(null);
-    //     }
-    //   };
 
     
 
@@ -105,6 +68,8 @@ const Quizz = () => {
             <div className="text-center">
                 <h2 className="font-semibold text-3xl mb-8">{question}</h2>
             </div>
+
+
             
             <ul className="mb-6">
                 {choices.map((choice, index) => (
